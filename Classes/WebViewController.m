@@ -55,6 +55,11 @@
 
 - (void)dealloc
 {
+    //make sure that it has stopped loading before deallocating
+    if (theWebView.loading)
+        [theWebView stopLoading];
+
+    //deallocate web view
 	theWebView.delegate = nil;
 	[theWebView release];
 	
