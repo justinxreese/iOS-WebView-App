@@ -68,12 +68,6 @@
 	[super dealloc];
 }
 
-- (void)refreshWeb:(id)sender {
-	[theWebView reload];
-}
-
-
-
 - (void)loadView
 {	
 	UIView *contentView = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];	
