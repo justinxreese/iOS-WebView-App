@@ -142,8 +142,18 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+    
+    //deallocate web view
+    if (theWebView.loading)
+        [theWebView stopLoading];
+    
+    theWebView.delegate = nil;
+    [theWebView release];
+    theWebView = nil;
 }
 
+#pragma mark -
+#pragma mark ActionSheet methods
 
 - (void)actionSheet:(UIActionSheet*)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
 	if (buttonIndex == 0) {
