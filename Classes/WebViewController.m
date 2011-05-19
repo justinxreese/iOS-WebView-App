@@ -13,60 +13,8 @@
 
 @synthesize urlString;
 
-// The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-/*
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization.
-    }
-    return self;
-}
-*/
-
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView {
-}
-*/
-
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad {
-    [super viewDidLoad];
-
-	[self.navigationController setToolbarHidden:NO animated:YES];
-	
-	UIBarButtonItem *backButton =	[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"backIcon.png"] style:UIBarButtonItemStylePlain target:theWebView action:@selector(goBack)];
-	UIBarButtonItem *forwardButton =	[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"forwardIcon.png"] style:UIBarButtonItemStylePlain target:theWebView action:@selector(goForward)];
-	UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:theWebView action:@selector(reload)];
-	UIBarButtonItem *openButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(shareAction)];
-	UIBarButtonItem *spacing = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-	
-	NSArray *contents = [[NSArray alloc] initWithObjects:backButton, spacing, forwardButton, spacing, refreshButton, spacing, openButton, nil];
-	[backButton release];
-	[forwardButton release];
-	[refreshButton release];
-	[openButton release];
-	[spacing release];
-	
-	[self setToolbarItems:contents animated:YES];
-
-}
-
-- (void)dealloc
-{
-    //make sure that it has stopped loading before deallocating
-    if (theWebView.loading)
-        [theWebView stopLoading];
-
-    //deallocate web view
-	theWebView.delegate = nil;
-	[theWebView release];
-	
-	[urlString release];
-	
-	[super dealloc];
-}
+#pragma mark -
+#pragma mark Application Lifecycle
 
 - (void)loadView
 {	
@@ -89,6 +37,29 @@
 	[theWebView loadRequest:req];
 	
 	[self.view addSubview: theWebView];
+}
+
+// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+	[self.navigationController setToolbarHidden:NO animated:YES];
+	
+	UIBarButtonItem *backButton =	[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"backIcon.png"] style:UIBarButtonItemStylePlain target:theWebView action:@selector(goBack)];
+	UIBarButtonItem *forwardButton =	[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"forwardIcon.png"] style:UIBarButtonItemStylePlain target:theWebView action:@selector(goForward)];
+	UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:theWebView action:@selector(reload)];
+	UIBarButtonItem *openButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(shareAction)];
+	UIBarButtonItem *spacing = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+	
+	NSArray *contents = [[NSArray alloc] initWithObjects:backButton, spacing, forwardButton, spacing, refreshButton, spacing, openButton, nil];
+	[backButton release];
+	[forwardButton release];
+	[refreshButton release];
+	[openButton release];
+	[spacing release];
+	
+	[self setToolbarItems:contents animated:YES];
+
 }
 
 #pragma mark UIWebView delegate methods
@@ -121,35 +92,10 @@
 	
 }
 
-
-
-
 // Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations.
     return (interfaceOrientation == UIInterfaceOrientationPortrait | UIInterfaceOrientationLandscapeLeft);
-}
-
-
-- (void)didReceiveMemoryWarning {
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc. that aren't in use.
-}
-
-- (void)viewDidUnload {
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-    
-    //deallocate web view
-    if (theWebView.loading)
-        [theWebView stopLoading];
-    
-    theWebView.delegate = nil;
-    [theWebView release];
-    theWebView = nil;
 }
 
 #pragma mark -
@@ -172,5 +118,44 @@
 	
 }
 
+#pragma mark -
+#pragma mark Memory management
+
+- (void)didReceiveMemoryWarning {
+    // Releases the view if it doesn't have a superview.
+    [super didReceiveMemoryWarning];
+    
+    // Release any cached data, images, etc. that aren't in use.
+}
+
+
+- (void)viewDidUnload {
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
+    // e.g. self.myOutlet = nil;
+    
+    //deallocate web view
+    if (theWebView.loading)
+        [theWebView stopLoading];
+    
+    theWebView.delegate = nil;
+    [theWebView release];
+    theWebView = nil;
+}
+
+- (void)dealloc
+{
+    //make sure that it has stopped loading before deallocating
+    if (theWebView.loading)
+        [theWebView stopLoading];
+    
+    //deallocate web view
+	theWebView.delegate = nil;
+	[theWebView release];
+	
+	[urlString release];
+	
+	[super dealloc];
+}
 
 @end
