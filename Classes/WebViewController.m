@@ -34,7 +34,6 @@
 	theWebView.delegate = self;
 	
 	NSURL *url = [NSURL URLWithString:urlString];
-	[urlString release];
 	NSURLRequest *req = [NSURLRequest requestWithURL:url];
 	[theWebView loadRequest:req];
 	
