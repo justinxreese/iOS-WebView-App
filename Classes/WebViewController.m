@@ -108,15 +108,14 @@
 	return YES;
 }
 
-- (void) webViewDidStartLoad: (UIWebView * ) webView {
-    NSLog(@"%@",webView.request.URL.absoluteString);
-    
+- (void) webViewDidStartLoad: (UIWebView * ) webView {    
     [whirl startAnimating]; 
     [self updateToolbar];
     
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
+    NSLog(@"%@",webView.request.URL.absoluteString);
     [self updateToolbar];
     self.title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"]; 
     [whirl stopAnimating];
