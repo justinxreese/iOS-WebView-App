@@ -18,6 +18,7 @@
 		5B1E4F2A12D9932000E21029 /* backIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B1E4F2612D9932000E21029 /* backIcon@2x.png */; };
 		5B1E4F2B12D9932000E21029 /* forwardIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B1E4F2712D9932000E21029 /* forwardIcon.png */; };
 		5B1E4F2C12D9932000E21029 /* forwardIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B1E4F2812D9932000E21029 /* forwardIcon@2x.png */; };
+		D00E7F07141099640020894A /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D00E7F06141099640020894A /* iAd.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		5B1E4F2712D9932000E21029 /* forwardIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = forwardIcon.png; path = images/forwardIcon.png; sourceTree = "<group>"; };
 		5B1E4F2812D9932000E21029 /* forwardIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "forwardIcon@2x.png"; path = "images/forwardIcon@2x.png"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* WebView-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "WebView-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		D00E7F06141099640020894A /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D00E7F07141099640020894A /* iAd.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
@@ -75,6 +78,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				D00E7F06141099640020894A /* iAd.framework */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
