@@ -22,6 +22,8 @@
     // Override point for customization after application launch.
     
 	navigationController = [[UINavigationController alloc] init];
+    navigationController.navigationBar.hidden = YES;
+    navigationController.toolbar.barStyle = UIBarStyleBlack;
 	WebViewController *webViewController = [[WebViewController alloc] init];
 	webViewController.urlString = @"http://www.google.com/";
 	
